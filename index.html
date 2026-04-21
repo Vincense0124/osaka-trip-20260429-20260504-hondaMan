@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#3d5a7a">
+  <title>大阪旅遊 2026 · 本田速人</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="site-header">
+  <span class="badge">🗾 OSAKA</span>
+  <h1>本田速人の大阪旅遊</h1>
+  <span class="trip-dates">4/29–5/04</span>
+</header>
+
+<!-- ── App ── -->
+<div id="app">
+
+  <!-- ① 行程 -->
+  <section class="tab-panel" id="tab-itinerary">
+    <div class="day-banner">
+      <img src="images/hondaman.jpeg" alt="本田速人" class="honda-img honda-left">
+      <span class="day-banner-title">每日行程</span>
+      <img src="images/hondaman.jpeg" alt="本田速人" class="honda-img honda-right">
+    </div>
+
+    <div class="day-selector">
+      <button class="day-btn">D0 &nbsp;04/28</button>
+      <button class="day-btn">D1 &nbsp;04/29</button>
+      <button class="day-btn">D2 &nbsp;04/30</button>
+      <button class="day-btn">D3 &nbsp;05/01</button>
+      <button class="day-btn">D4 &nbsp;05/02</button>
+      <button class="day-btn">D5 &nbsp;05/03</button>
+      <button class="day-btn">D6 &nbsp;05/04</button>
+    </div>
+
+    <div class="place-list" id="place-list"></div>
+  </section>
+
+  <!-- ② 預定資訊 -->
+  <section class="tab-panel" id="tab-reservation">
+    <div class="flight-banner">
+      <div class="flight-icon">✈️</div>
+      <div class="flight-info">
+        <h3>2026 大阪 / 紀伊半島 自駕之旅</h3>
+        <div class="flight-route">
+          <span>🇹🇼 桃園</span>
+          <span class="arrow">→</span>
+          <span>🇯🇵 關西</span>
+        </div>
+        <p>2026年4月29日 – 5月4日 · 6天5夜</p>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-icon">✈️</div>
+      <div class="res-body">
+        <div class="res-day">D1 · 4/29</div>
+        <div class="res-name">去程班機</div>
+        <div class="res-detail">桃園國際機場 → 關西國際機場</div>
+        <span class="res-note">請提前2小時抵達機場</span>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-icon">🏨</div>
+      <div class="res-body">
+        <div class="res-day">D1 · 4/29</div>
+        <div class="res-name">大阪機場奧德西斯套房酒店</div>
+        <div class="res-detail">Osaka Airport Odyssey Suites · JR 鳳站步行5分</div>
+        <span class="res-note">チェックイン</span>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-icon">🚗</div>
+      <div class="res-body">
+        <div class="res-day">D2 · 4/30</div>
+        <div class="res-name">Rental819 泉佐野</div>
+        <div class="res-detail">關西機場附近取車 · 自駕之旅開始</div>
+        <span class="res-note">攜帶國際駕照 + 護照</span>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-icon">🏨</div>
+      <div class="res-body">
+        <div class="res-day">D2 · 4/30</div>
+        <div class="res-name">東橫INN 伊勢市車站</div>
+        <div class="res-detail">Toyoko Inn Ise-shi Eki</div>
+        <span class="res-note">チェックイン</span>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-icon">🏨</div>
+      <div class="res-body">
+        <div class="res-day">D3 · 5/01</div>
+        <div class="res-name">龜之井酒店 那智勝浦</div>
+        <div class="res-detail">Kameyoi Hotel Nachikatsuura</div>
+        <span class="res-note">チェックイン</span>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-icon">🏨</div>
+      <div class="res-body">
+        <div class="res-day">D4 · 5/02</div>
+        <div class="res-name">和歌山串本萬楓酒店</div>
+        <div class="res-detail">Wakayama Kushimoto Maple Hotel</div>
+        <span class="res-note">チェックイン</span>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-icon">🏨</div>
+      <div class="res-body">
+        <div class="res-day">D5 · 5/03</div>
+        <div class="res-name">大阪機場奧德西斯套房酒店</div>
+        <div class="res-detail">Osaka Airport Odyssey Suites</div>
+        <span class="res-note">チェックイン</span>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-icon">🚗</div>
+      <div class="res-body">
+        <div class="res-day">D5 · 5/03</div>
+        <div class="res-name">Rental819 還車</div>
+        <div class="res-detail">返還租車，確認油量加滿</div>
+        <span class="res-note">確認車輛無損傷</span>
+      </div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-icon">✈️</div>
+      <div class="res-body">
+        <div class="res-day">D6 · 5/04</div>
+        <div class="res-name">回程班機</div>
+        <div class="res-detail">關西國際機場 → 桃園國際機場</div>
+        <span class="res-note">請提前2小時抵達機場</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 行李 Checklist -->
+  <section class="tab-panel" id="tab-checklist">
+    <div class="checklist-header">
+      <div>
+        <strong>行李清單</strong>
+        <div class="progress-text" id="progress-text">0 / 0 已完成</div>
+      </div>
+      <button class="clear-btn" id="clear-checklist">清除全部</button>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+    <div id="checklist-container"></div>
+  </section>
+
+  <!-- ④ 備註 -->
+  <section class="tab-panel" id="tab-notes">
+    <div class="note-card highlight">
+      <div class="note-title">🚗 自駕注意事項</div>
+      <div class="note-body">
+        <ul>
+          <li><strong>日本靠左行駛</strong>，方向盤在右側</li>
+          <li>高速公路使用 ETC 卡，或在收費站付現</li>
+          <li>停車場大多需付費，請事先查好各景點停車場</li>
+          <li>加油站：一般加 <strong>レギュラー（Regular）</strong>即可</li>
+          <li>還車前記得加滿油，帶好收據</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-card">
+      <div class="note-title">⛩️ 神社寺廟參拜禮儀</div>
+      <div class="note-body">
+        <ul>
+          <li>進鳥居前先輕鞠躬</li>
+          <li>手水舍：右手持柄杓→沖左手→沖右手→漱口→沖柄杓</li>
+          <li>拍手（柏手）：二禮二拍手一禮</li>
+          <li>伊勢神宮內宮禁止拍照（特定區域）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-card">
+      <div class="note-title">🌧️ 雨備景點</div>
+      <div class="note-body">
+        <ul>
+          <li><strong>D3 (5/01)</strong>：鳥羽水族館</li>
+          <li><strong>D4 (5/02)</strong>：太地町立鯨魚博物館</li>
+          <li>建議下雨天改走室內景點，調整行程順序</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-card">
+      <div class="note-title">💴 金錢 &amp; 支付</div>
+      <div class="note-body">
+        <ul>
+          <li>建議在台灣機場或市區先換好日幣</li>
+          <li>部分小店、神社僅收現金</li>
+          <li>便利商店 ATM（7-11 Seven Bank）可提領外幣</li>
+          <li>交通系 IC 卡（ICOCA）在關西很方便</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-card">
+      <div class="note-title">📞 緊急聯絡資訊</div>
+      <div class="note-body">
+        <ul>
+          <li>警察：<strong>110</strong></li>
+          <li>救護車 / 消防：<strong>119</strong></li>
+          <li>台灣外交部急難救助：<strong>+886-800-085-095</strong></li>
+          <li>台灣駐大阪辦事處：+81-6-6443-8481</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-card">
+      <div class="note-title">📱 網路 &amp; 通訊</div>
+      <div class="note-body">
+        <ul>
+          <li>建議租借 WiFi 分享器（機場取還）或購買日本 SIM 卡</li>
+          <li>Google Maps 離線地圖：出發前下載關西 / 紀伊半島地圖</li>
+          <li>推薦 App：Google 翻譯（相機即時翻譯）、食べログ</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /#app -->
+
+<!-- ── Bottom Navigation ── -->
+<nav class="bottom-nav">
+  <button data-tab="itinerary">
+    <span class="nav-icon">🗺️</span>行程
+  </button>
+  <button data-tab="reservation">
+    <span class="nav-icon">📋</span>預定資訊
+  </button>
+  <button data-tab="checklist">
+    <span class="nav-icon">🧳</span>行李
+  </button>
+  <button data-tab="notes">
+    <span class="nav-icon">📝</span>備註
+  </button>
+</nav>
+
+<!-- ── Data (from KML 大阪本田速人.kml) ── -->
+<script>
+var S = function(label, key, icon) { return {label:label, key:key, icon:icon}; };
+var FOOD    = S('餐廳',  'cat-food',    '🍽️');
+var HOTEL   = S('住宿',  'cat-hotel',   '🏨');
+var SHOP    = S('購物',  'cat-shop',    '🛍️');
+var SHRINE  = S('神社',  'cat-shrine',  '⛩️');
+var SIGHT   = S('景點',  'cat-sight',   '🏞️');
+var TRANSIT = S('交通',  'cat-transit', '🚗');
+var RAIN    = S('雨備',  'cat-rain',    '☂️');
+
+window.DAYS_DATA = [
+  {
+    folder: '出發前夕 - 04/28', dateLabel: '04/28',
+    places: [
+      { name: '桃園高鐵站集合',    desc: '21:40 在桃園高鐵站大廳集合', category: TRANSIT },
+      { name: '搭機捷普通車往台北方向', desc: '於 A18 高鐵桃園站 → 搭普通車 3 站 → A15 大園站下車（車程約 12 分鐘）', category: TRANSIT },
+      { name: '桃園城市商旅航空館', desc: 'A15 大園站出站步行約 5 分鐘', category: HOTEL }
+    ]
+  },
+  {
+    folder: '第一天 - 04/29', dateLabel: '04/29',
+    places: [
+      { name: 'Bike World',                        desc: '',                  category: SIGHT   },
+      { name: '大阪機場奧德西斯套房酒店',              desc: 'JR 關空快速→鳳站→步行5分', category: HOTEL   },
+      { name: '安利美特 大阪日本橋店',                 desc: '日本橋電電城',             category: SHOP    },
+      { name: 'Surugaya Nipponbashi',               desc: '日本橋電電城',             category: SHOP    },
+      { name: 'Joshin Super Kids Land Main Store',  desc: '日本橋電電城',             category: SHOP    },
+      { name: '福太郎大阪燒',                         desc: '現場排隊',             category: FOOD    }
+    ]
+  },
+  {
+    folder: '第二天 - 04/30', dateLabel: '04/30',
+    places: [
+      { name: 'Rental819 泉佐野',  desc: '取租車，自駕開始',           category: TRANSIT },
+      { name: '大鳥神社',           desc: '',                         category: SIGHT   },
+      { name: '針T、R、S道之驛',    desc: '',                         category: SIGHT   },
+      { name: '上野城',             desc: '',                         category: SHRINE  },
+      { name: '東橫INN 伊勢市車站', desc: '今晚住宿',                  category: HOTEL   },
+      { name: '二見興玉神社',        desc: '',                         category: SIGHT,
+        backups: [
+          { name: '猿田彥神社', desc: '時間來不及時的替代方案', category: SIGHT }
+        ]
+      },
+      { name: '一升びん 松寿亭',    desc: '晚餐・現場排隊',             category: FOOD    }
+    ]
+  },
+  {
+    folder: '第三天 - 05/01', dateLabel: '05/01',
+    places: [
+      { name: '伊勢內宮前 托福橫丁',                   desc: '',        category: SIGHT  },
+      { name: '伊勢市駅前商店街',                       desc: '',        category: SIGHT  },
+      { name: '豐受大神宮（伊勢神宮 外宮）',             desc: '',        category: SHRINE },
+      { name: '皇大神宮（伊勢神宮 內宮）',               desc: '',        category: SHRINE,
+        backups: [
+          { name: '鳥羽水族館', desc: '雨天室內備案', category: RAIN }
+        ]
+      },
+      { name: '横山展望台',                             desc: '',        category: SIGHT  },
+      { name: 'Roadside Station Kii-Nagashima Manbo', desc: '',        category: SIGHT  },
+      { name: 'Onigajo Rock Formations',              desc: '',        category: SIGHT  },
+      { name: 'Road Station Kumano Hana-no-iwaya',    desc: '',        category: SIGHT  },
+      { name: '龜之井酒店 那智勝浦',                    desc: '今晚住宿', category: HOTEL  },
+      { name: 'Udon-ya Fukusuke',                     desc: '',        category: FOOD   },
+      { name: 'Butasute',                             desc: '',        category: FOOD   },
+      { name: '五十鈴川咖啡',                           desc: '',        category: FOOD   },
+      { name: 'Shishiiwa',                            desc: '',        category: SIGHT  },
+      { name: 'Kumano Cafe',                          desc: '',        category: FOOD   }
+    ]
+  },
+  {
+    folder: '第四天 - 05/02', dateLabel: '05/02',
+    places: [
+      { name: '熊野那智大社',  desc: '',       category: SHRINE },
+      { name: '那智瀑布',      desc: '',       category: SIGHT,
+        backups: [
+          { name: '太地町立鯨魚博物館', desc: '雨天室內備案・鄰近串本', category: RAIN }
+        ]
+      },
+      { name: '和歌山串本萬楓酒店', desc: '今晚住宿', category: HOTEL  },
+      { name: 'Katsuura gyoko Nigiwai ichiba', desc: '', category: SIGHT  },
+      { name: '青岸渡寺',     desc: '',       category: SHRINE },
+      { name: 'Daimonsaka Parking Lot',        desc: '', category: SIGHT  },
+      { name: 'Ōyunohara Sanctuary',           desc: '', category: SIGHT  },
+      { name: '熊野速玉大社', desc: '',       category: SHRINE },
+      { name: '熊野本宮大社', desc: '',       category: SHRINE },
+      { name: '串本旬彩おおはし',                 desc: '',       category: FOOD   },
+      { name: '料理 萬口',                       desc: '',       category: FOOD   },
+      { name: '香蔵',                            desc: '',       category: FOOD   },
+      { name: '大阪王將 串本店',                  desc: '',       category: FOOD   },
+      { name: '喫茶 ロン',                       desc: '',       category: FOOD   }
+    ]
+  },
+  {
+    folder: '第五天 - 05/03', dateLabel: '05/03',
+    places: [
+      { name: '大阪機場奧德西斯套房酒店',                          desc: '今晚住宿', category: HOTEL  },
+      { name: 'Roadside Station Susami',                        desc: '',       category: SIGHT  },
+      { name: 'Sandanbeki Cliff',                               desc: '',       category: SIGHT  },
+      { name: '千疊敷',                                           desc: '',       category: SIGHT  },
+      { name: 'ToreTore市場',                                    desc: '',       category: SIGHT  },
+      { name: 'Shirasaki Marine Park',                          desc: '',       category: SIGHT  },
+      { name: '泉南臨空公園',                                      desc: '',       category: SIGHT  },
+      { name: 'Monument of the Southernmost Point of Honshu',  desc: '',       category: SIGHT  },
+      { name: '潮岬觀光塔',                                       desc: '',       category: SIGHT  },
+      { name: '和歌山城',                                         desc: '',       category: SIGHT  }
+    ]
+  },
+  {
+    folder: '第六天 - 05/04', dateLabel: '05/04',
+    places: [
+      { name: '關西機場', desc: '回程班機・帰国', category: TRANSIT }
+    ]
+  }
+];
+
+window.CHECKLIST_DATA = [
+  { key: 'docs',  icon: '📄', name: '證件 & 財務', items: [
+    '護照（有效期6個月以上）',
+    '國際駕照',
+    '旅遊保險文件（電子/紙本）',
+    '日本現金（日幣，建議帶3萬以上）',
+    '信用卡（Visa/Master）',
+    '緊急聯絡卡'
+  ]},
+  { key: 'tech',  icon: '📱', name: '3C & 電子', items: [
+    '手機充電線 + 變壓插頭',
+    '行動電源（飛機需隨身攜帶）',
+    '相機 + 記憶卡',
+    '耳機',
+    'WiFi 分享器 / SIM 卡'
+  ]},
+  { key: 'cloth', icon: '👕', name: '衣物', items: [
+    '換洗衣物（5套）',
+    '薄外套 / 防風夾克',
+    '睡衣',
+    '內衣褲（多備一套）',
+    '舒適走路鞋',
+    '夾腳拖 / 室內拖鞋'
+  ]},
+  { key: 'wash',  icon: '🧴', name: '盥洗 & 個人', items: [
+    '牙刷 + 牙膏',
+    '洗髮精 + 潤髮乳',
+    '沐浴乳',
+    '保養品 / 乳液',
+    '防曬乳',
+    '刮鬍刀'
+  ]},
+  { key: 'med',   icon: '💊', name: '藥品', items: [
+    '感冒藥',
+    '止瀉藥',
+    '腸胃藥',
+    '暈車藥（自駕路段多）',
+    'OK繃 + 消毒棉',
+    '個人常備藥'
+  ]},
+  { key: 'misc',  icon: '🎒', name: '其他', items: [
+    '雨傘 / 輕便雨衣',
+    '環保購物袋',
+    '行李箱鎖',
+    '旅行頸枕',
+    '濕紙巾 / 面紙',
+    '零食 / 泡麵（備用）'
+  ]}
+];
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
