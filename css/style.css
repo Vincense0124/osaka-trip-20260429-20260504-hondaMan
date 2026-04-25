@@ -657,6 +657,11 @@ html, body {
   margin-top: 2px;
 }
 
+.flight-time {
+  font-weight: 700;
+  color: var(--text);
+}
+
 .res-card .res-note {
   display: inline-block;
   margin-top: 6px;
