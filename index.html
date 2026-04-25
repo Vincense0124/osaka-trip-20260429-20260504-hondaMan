@@ -102,6 +102,12 @@
         <div class="res-name">龜之井酒店 那智勝浦</div>
         <div class="res-detail">Kameyoi Hotel Nachikatsuura</div>
         <span class="res-note">チェックイン</span>
+        <ul class="res-tips">
+          <li>🍜 宵夜拉麵 &amp; 飲料吧（免費・至翌晨 6 點）</li>
+          <li>🍽️ 晚餐需加購 · 早餐附贈</li>
+          <li>♨️ 大浴場 · 可借浴衣至館外泡湯</li>
+          <li>🎯 館內有名產店、遊戲室（桌球、飛鏢）</li>
+        </ul>
       </div>
     </div>
 
@@ -110,8 +116,14 @@
       <div class="res-body">
         <div class="res-day">D4 · 5/02</div>
         <div class="res-name">和歌山串本萬楓酒店</div>
-        <div class="res-detail">Wakayama Kushimoto Maple Hotel</div>
+        <div class="res-detail">Fairfield by Marriott · 串本橋杭岩道之驛共構</div>
         <span class="res-note">チェックイン</span>
+        <ul class="res-tips">
+          <li>⚠️ 館內無餐廳、無早餐（2025 起取消早餐盒）；黃金週周邊餐廳擁擠，建議抵達前先用餐，或至 Okuwa 超市採購隔天早餐</li>
+          <li>💳 前台僅收信用卡／電子支付，不收現金、不換幣（自販機可用現金）</li>
+          <li>🅿️ 停車場客滿時請停旁邊道之驛（串本橋杭岩）停車場</li>
+          <li>🛁 無浴缸，Rain Shower 淋浴；刮鬍刀、梳子等備品 Check-in 時向前台索取</li>
+        </ul>
       </div>
     </div>
 
@@ -223,16 +235,6 @@
       </div>
     </div>
 
-    <div class="note-card">
-      <div class="note-title">📱 網路 &amp; 通訊</div>
-      <div class="note-body">
-        <ul>
-          <li>建議租借 WiFi 分享器（機場取還）或購買日本 SIM 卡</li>
-          <li>Google Maps 離線地圖：出發前下載關西 / 紀伊半島地圖</li>
-          <li>推薦 App：Google 翻譯（相機即時翻譯）、食べログ</li>
-        </ul>
-      </div>
-    </div>
   </section>
 
 </div><!-- /#app -->
@@ -243,7 +245,7 @@
     <span class="nav-icon">🗺️</span>行程
   </button>
   <button data-tab="reservation">
-    <span class="nav-icon">📋</span>預定資訊
+    <span class="nav-icon">📋</span>已預約資訊
   </button>
   <button data-tab="checklist">
     <span class="nav-icon">🧳</span>行李
@@ -263,108 +265,192 @@ var SHRINE  = S('神社',  'cat-shrine',  '⛩️');
 var SIGHT   = S('景點',  'cat-sight',   '🏞️');
 var TRANSIT = S('交通',  'cat-transit', '🚗');
 var RAIN    = S('雨備',  'cat-rain',    '☂️');
+var GAS     = S('加油站','cat-gas',     '⛽');
+var STOP    = S('休息站','cat-stop',    '🅿️');
+var MART    = S('超市',  'cat-mart',    '🛒');
 
 window.DAYS_DATA = [
   {
     folder: '出發前夕 - 04/28', dateLabel: '04/28',
     places: [
-      { name: '桃園高鐵站集合',    desc: '21:40 在桃園高鐵站大廳集合', category: TRANSIT },
-      { name: '搭機捷普通車往台北方向', desc: '於 A18 高鐵桃園站 → 搭普通車 3 站 → A15 大園站下車（車程約 12 分鐘）', category: TRANSIT },
-      { name: '桃園城市商旅航空館', desc: 'A15 大園站出站步行約 5 分鐘', category: HOTEL }
+      { name: '桃園高鐵站集合',    desc: '21:40 在桃園高鐵站大廳集合', category: TRANSIT, route: true },
+      { name: '桃園城市商旅航空館', desc: '搭 Uber 前往', category: HOTEL,   route: true }
     ]
   },
   {
     folder: '第一天 - 04/29', dateLabel: '04/29',
     places: [
-      { name: 'Bike World',                        desc: '',                  category: SIGHT   },
-      { name: '大阪機場奧德西斯套房酒店',              desc: 'JR 關空快速→鳳站→步行5分', category: HOTEL   },
-      { name: '安利美特 大阪日本橋店',                 desc: '日本橋電電城',             category: SHOP    },
-      { name: 'Surugaya Nipponbashi',               desc: '日本橋電電城',             category: SHOP    },
-      { name: 'Joshin Super Kids Land Main Store',  desc: '日本橋電電城',             category: SHOP    },
-      { name: '福太郎大阪燒',                         desc: '現場排隊',             category: FOOD    }
+      { name: 'Bike World',                        desc: '',                    category: SIGHT,  route: true },
+      { name: '大阪機場奧德西斯套房酒店',             desc: 'JR 關空快速→鳳站→步行5分', category: HOTEL,  route: true },
+      { name: '安利美特 大阪日本橋店',               desc: '日本橋電電城',             category: SHOP,   route: true },
+      { name: 'Surugaya Nipponbashi',              desc: '日本橋電電城',             category: SHOP,   route: true },
+      { name: 'Joshin Super Kids Land Main Store', desc: '日本橋電電城',             category: SHOP,   route: true },
+      { name: '福太郎大阪燒',                       desc: '現場排隊',                category: FOOD,   route: true }
     ]
   },
   {
     folder: '第二天 - 04/30', dateLabel: '04/30',
     places: [
-      { name: 'Rental819 泉佐野',  desc: '取租車，自駕開始',           category: TRANSIT },
-      { name: '大鳥神社',           desc: '',                         category: SIGHT   },
-      { name: '針T、R、S道之驛',    desc: '',                         category: SIGHT   },
-      { name: '上野城',             desc: '',                         category: SHRINE  },
-      { name: '東橫INN 伊勢市車站', desc: '今晚住宿',                  category: HOTEL   },
-      { name: '二見興玉神社',        desc: '',                         category: SIGHT,
-        backups: [
-          { name: '猿田彥神社', desc: '時間來不及時的替代方案', category: SIGHT }
-        ]
+      { name: 'Rental819泉佐野',              desc: '取租車，自駕開始', category: TRANSIT, route: true },
+      { name: '大鳥神社',                      desc: '',              category: SIGHT,   route: true },
+      { name: 'Takamine Service Area (down)', desc: '高速公路休息站', category: STOP,    route: true },
+      { name: '針T、R、S道之驛',              desc: '',              category: SIGHT,   route: true },
+      { name: '上野城',                        desc: '',              category: SIGHT,   route: true },
+      { name: '伊賀流忍者博物館',              desc: '上野城旁',      category: SIGHT,   route: true },
+      { name: 'Roadside Station Iga',         desc: '收費道路休息站', category: STOP,    route: true },
+      { name: '關宿',                          desc: '江戶時代宿場町', category: SIGHT,   route: true },
+      { name: 'Meihan Seki Drive-in',         desc: '收費道路休息站', category: STOP,    route: true },
+      { name: '嬉野PA (下り)',                 desc: '收費道路休息站', category: STOP,    route: true },
+      { name: '二見興玉神社',                  desc: '',              category: SIGHT,   route: true,
+        backups: [{ name: '猿田彥神社', desc: '時間來不及時的替代方案', category: SIGHT }]
       },
-      { name: '一升びん 松寿亭',    desc: '晚餐・現場排隊',             category: FOOD    }
+      { name: '東橫INN 伊勢市車站',            desc: '今晚住宿',      category: HOTEL,   route: true },
+      { name: '一升びん 松寿亭',              desc: '晚餐・現場排隊', category: FOOD,    route: true },
+      { name: 'Iga Service Area Shop',        desc: '',              category: MART   },
+      { name: 'Gyutora gram mart. Miyamachi shop', desc: '',         category: MART   },
+      { name: '豚捨 若柳',                    desc: '',              category: FOOD   },
+      { name: 'ぎゅーとら うらのはし店',        desc: '',              category: MART   },
+      { name: 'Don Quijote Ise store',        desc: '',              category: SHOP   },
+      { name: 'ise local cuisine DAIKI',      desc: '',              category: FOOD   },
+      { name: 'Meoto Iwa (Wedded Rocks)',     desc: '夫婦岩・二見浦', category: SIGHT  },
+      { name: 'BonTin cafe 禊',               desc: '',              category: FOOD   },
+      { name: '海風美術店',                    desc: '',              category: SHOP   },
+      { name: 'Ryugusha',                     desc: '',              category: SIGHT  }
     ]
   },
   {
     folder: '第三天 - 05/01', dateLabel: '05/01',
     places: [
-      { name: '伊勢內宮前 托福橫丁',                   desc: '',        category: SIGHT  },
-      { name: '伊勢市駅前商店街',                       desc: '',        category: SIGHT  },
-      { name: '豐受大神宮（伊勢神宮 外宮）',             desc: '',        category: SHRINE },
-      { name: '皇大神宮（伊勢神宮 內宮）',               desc: '',        category: SHRINE,
-        backups: [
-          { name: '鳥羽水族館', desc: '雨天室內備案', category: RAIN }
-        ]
+      { name: '豐受大神宮（伊勢神宮 外宮）',           desc: '',           category: SHRINE, route: true },
+      { name: '皇大神宮（伊勢神宮 內宮）',             desc: '',           category: SHRINE, route: true,
+        backups: [{ name: '鳥羽水族館', desc: '雨天室內備案', category: RAIN }]
       },
-      { name: '横山展望台',                             desc: '',        category: SIGHT  },
-      { name: 'Roadside Station Kii-Nagashima Manbo', desc: '',        category: SIGHT  },
-      { name: 'Onigajo Rock Formations',              desc: '',        category: SIGHT  },
-      { name: 'Road Station Kumano Hana-no-iwaya',    desc: '',        category: SIGHT  },
-      { name: '龜之井酒店 那智勝浦',                    desc: '今晚住宿', category: HOTEL  },
-      { name: 'Udon-ya Fukusuke',                     desc: '',        category: FOOD   },
-      { name: 'Butasute',                             desc: '',        category: FOOD   },
-      { name: '五十鈴川咖啡',                           desc: '',        category: FOOD   },
-      { name: 'Shishiiwa',                            desc: '',        category: SIGHT  },
-      { name: 'Kumano Cafe',                          desc: '',        category: FOOD   }
+      { name: '横山展望台',                           desc: '',           category: SIGHT,  route: true },
+      { name: 'Eneos Ishikawa Oil',                  desc: '',           category: GAS,    route: true },
+      { name: 'Eneos Nishiki',                       desc: '',           category: GAS,    route: true },
+      { name: 'Roadside Station Kii-Nagashima Manbo',desc: '道の駅・紀伊長島マンボウ', category: SIGHT, route: true },
+      { name: 'Apollo Station Kiinagashima Kita',    desc: '',           category: GAS,    route: true },
+      { name: 'COSMO',                               desc: '',           category: GAS,    route: true },
+      { name: 'Eneos Miyama Inter',                  desc: '',           category: GAS,    route: true },
+      { name: 'Apollostation Owase Kokudo SS',       desc: '',           category: GAS,    route: true },
+      { name: 'Cosmo Kamioka Oil',                   desc: '',           category: GAS,    route: true },
+      { name: 'Onigajo Rock Formations',             desc: '鬼城岩礁',   category: SIGHT,  route: true },
+      { name: 'Road Station Kumano Hana-no-iwaya',   desc: '花窟神社旁道の駅', category: SIGHT, route: true },
+      { name: 'Selfix Kumano SS',                    desc: '',           category: GAS,    route: true },
+      { name: 'Eneos Arima SS',                      desc: '',           category: GAS,    route: true },
+      { name: '浜口石油 セルフ那智天満SS',              desc: '',           category: GAS,    route: true },
+      { name: 'Apollostation Self Katsuura SS',      desc: '',           category: GAS,    route: true },
+      { name: 'Esso',                                desc: '',           category: GAS,    route: true },
+      { name: '龜之井酒店 那智勝浦',                  desc: '今晚住宿',   category: HOTEL,  route: true },
+      { name: '伊勢市駅前商店街',                      desc: '',           category: MART   },
+      { name: '伊勢內宮前 托福橫丁',                   desc: '',           category: MART   },
+      { name: '豐受大神宮別宮 月夜見宮',               desc: '',           category: SHRINE },
+      { name: '月讀宮',                               desc: '',           category: SHRINE },
+      { name: '皇大神宮別宮 伊雜宮',                  desc: '',           category: SHRINE },
+      { name: '皇大神宮別宮 瀧原宮',                  desc: '',           category: SHRINE },
+      { name: 'Udon-ya Fukusuke',                    desc: '',           category: FOOD   },
+      { name: 'Butasute',                            desc: '',           category: FOOD   },
+      { name: '五十鈴川咖啡',                          desc: '',           category: FOOD   },
+      { name: '赤福 本店',                            desc: '',           category: FOOD   },
+      { name: 'Isshōbin Ise-Naiku Branch',           desc: '',           category: FOOD   },
+      { name: 'Yamamura Milk Gakko Gekumae',         desc: '',           category: FOOD   },
+      { name: '鳥羽展望台',                           desc: '',           category: SIGHT  },
+      { name: 'Asama Mountain View Point',           desc: '',           category: SIGHT  },
+      { name: 'Shishiiwa',                           desc: '',           category: SIGHT  },
+      { name: 'Shichiri-mihama Beach',               desc: '七里御濱',   category: SIGHT  },
+      { name: 'Kihoku Parking Area',                 desc: '收費道路休息站', category: STOP },
+      { name: 'Roadside Station Miyama',             desc: '收費道路休息站', category: STOP },
+      { name: 'Road Station Nachi',                  desc: '收費道路休息站', category: STOP },
+      { name: 'Kumano Cafe',                         desc: '',           category: FOOD   },
+      { name: 'Maguro no Yamaki',                    desc: '',           category: FOOD   },
+      { name: '居酒屋 大漁',                          desc: '',           category: FOOD   },
+      { name: 'Mehari Sushi Nidaime',                desc: '',           category: FOOD   },
+      { name: 'bodai',                               desc: '',           category: FOOD   },
+      { name: 'ama ai',                              desc: '',           category: FOOD   },
+      { name: 'Ichirin',                             desc: '',           category: FOOD   },
+      { name: 'ボンクラ コーヒー',                      desc: '',           category: FOOD   },
+      { name: 'Evergreen (Katsuura)',                desc: '',           category: MART   }
     ]
   },
   {
     folder: '第四天 - 05/02', dateLabel: '05/02',
     places: [
-      { name: '熊野那智大社',  desc: '',       category: SHRINE },
-      { name: '那智瀑布',      desc: '',       category: SIGHT,
-        backups: [
-          { name: '太地町立鯨魚博物館', desc: '雨天室內備案・鄰近串本', category: RAIN }
-        ]
-      },
-      { name: '和歌山串本萬楓酒店', desc: '今晚住宿', category: HOTEL  },
-      { name: 'Katsuura gyoko Nigiwai ichiba', desc: '', category: SIGHT  },
-      { name: '青岸渡寺',     desc: '',       category: SHRINE },
-      { name: 'Daimonsaka Parking Lot',        desc: '', category: SIGHT  },
-      { name: 'Ōyunohara Sanctuary',           desc: '', category: SIGHT  },
-      { name: '熊野速玉大社', desc: '',       category: SHRINE },
-      { name: '熊野本宮大社', desc: '',       category: SHRINE },
-      { name: '串本旬彩おおはし',                 desc: '',       category: FOOD   },
-      { name: '料理 萬口',                       desc: '',       category: FOOD   },
-      { name: '香蔵',                            desc: '',       category: FOOD   },
-      { name: '大阪王將 串本店',                  desc: '',       category: FOOD   },
-      { name: '喫茶 ロン',                       desc: '',       category: FOOD   }
+      { name: 'Katsuura gyoko Nigiwai ichiba',                desc: '勝浦魚市場',  category: SIGHT,  route: true },
+      { name: 'Daimonsaka Parking Lot',                        desc: '大門坂入口',  category: SIGHT,  route: true },
+      { name: '青岸渡寺',                                      desc: '',            category: SHRINE, route: true },
+      { name: '熊野那智大社',                                   desc: '',            category: SIGHT,  route: true },
+      { name: '那智瀑布',                                       desc: '飛瀧神社',    category: SIGHT,  route: true },
+      { name: '2-chōme-2-14 Jofuku',                          desc: '',            category: GAS,    route: true },
+      { name: 'Ōyunohara Sanctuary',                          desc: '',            category: SIGHT,  route: true },
+      { name: '熊野本宮大社',                                   desc: '',            category: SHRINE, route: true },
+      { name: 'Apollo Station Kumanogawa',                     desc: '',            category: GAS,    route: true },
+      { name: '熊野速玉大社',                                   desc: '',            category: SHRINE, route: true },
+      { name: '橋杭岩',                                        desc: '',            category: SIGHT  },
+      { name: 'Hamaguchi Oil Self Kushimoto Filling Station',  desc: '',            category: GAS,    route: true },
+      { name: 'Eneos Sun Dream Shimosato SS',                  desc: '',            category: GAS,    route: true },
+      { name: '和歌山串本萬楓酒店',                             desc: '今晚住宿',    category: HOTEL,  route: true },
+      { name: '太地町立鯨魚博物館',                             desc: '雨天室內備案', category: RAIN   },
+      { name: '飛瀧神社 社務所',                               desc: '',            category: SHRINE },
+      { name: 'Miharetei',                                    desc: '',            category: FOOD   },
+      { name: '茶房珍重庵',                                    desc: '',            category: FOOD   },
+      { name: 'Kumano Kodo - Nakahechi Daimon-saka Pilgrim Route', desc: '',       category: SIGHT  },
+      { name: 'Furikase Bridge',                               desc: '',            category: SIGHT  },
+      { name: 'Roadside station Taiji',                        desc: '收費道路休息站', category: STOP },
+      { name: 'ENEOS Kushimoto SS',                            desc: '',            category: GAS   },
+      { name: 'Cosmo Self Station Kushimoto',                  desc: '',            category: GAS   },
+      { name: 'Road Station Kushimotohashiguiiwa',             desc: '',            category: STOP  },
+      { name: 'Kuroshio-sushi Kushimoto',                      desc: '',            category: FOOD  },
+      { name: 'Evergreen Kushimoto',                           desc: '',            category: MART  },
+      { name: 'Matsu Sushi',                                  desc: '',            category: FOOD  },
+      { name: '串本旬彩おおはし',                               desc: '',            category: FOOD  },
+      { name: '料理 萬口',                                     desc: '',            category: FOOD  },
+      { name: '香蔵',                                          desc: '',            category: FOOD  },
+      { name: '大阪王將 串本店',                               desc: '',            category: FOOD  },
+      { name: '喫茶 ロン',                                     desc: '',            category: FOOD  }
     ]
   },
   {
     folder: '第五天 - 05/03', dateLabel: '05/03',
     places: [
-      { name: '大阪機場奧德西斯套房酒店',                          desc: '今晚住宿', category: HOTEL  },
-      { name: 'Roadside Station Susami',                        desc: '',       category: SIGHT  },
-      { name: 'Sandanbeki Cliff',                               desc: '',       category: SIGHT  },
-      { name: '千疊敷',                                           desc: '',       category: SIGHT  },
-      { name: 'ToreTore市場',                                    desc: '',       category: SIGHT  },
-      { name: 'Shirasaki Marine Park',                          desc: '',       category: SIGHT  },
-      { name: '泉南臨空公園',                                      desc: '',       category: SIGHT  },
-      { name: 'Monument of the Southernmost Point of Honshu',  desc: '',       category: SIGHT  },
-      { name: '潮岬觀光塔',                                       desc: '',       category: SIGHT  },
-      { name: '和歌山城',                                         desc: '',       category: SIGHT  }
+      { name: 'Monument of the Southernmost Point of Honshu', desc: '本州最南端', category: SIGHT,  route: true },
+      { name: 'Roadside Station Susami',               desc: '道の駅・すさみ', category: SIGHT, route: true },
+      { name: 'ENEOS Hiokigawa SS',                    desc: '',           category: GAS,    route: true },
+      { name: '三段壁',                                  desc: '',           category: SIGHT,  route: true },
+      { name: '千疊敷',                                  desc: '',           category: SIGHT,  route: true, mapDest: '2927-72, Shirahama, Nishimuro District, Wakayama 649-2211日本' },
+      { name: '白良濱',                                  desc: '',           category: SIGHT,  route: true },
+      { name: 'Eneos Shirahama',                        desc: '',           category: GAS,    route: true },
+      { name: 'ToreTore市場',                            desc: '',           category: MART,   route: true },
+      { name: 'Gasta セルフ白浜 SS (石橋)',             desc: '',           category: GAS,    route: true },
+      { name: 'Shirasaki Marine Park',                  desc: '',           category: SIGHT,  route: true },
+      { name: '和歌山城',                                desc: '',           category: SIGHT,  route: true },
+      { name: '泉南臨空公園',                             desc: '',           category: SIGHT,  route: true },
+      { name: '大阪機場奧德西斯套房酒店',                  desc: '今晚住宿',   category: HOTEL,  route: true },
+      { name: '潮岬觀光塔',                              desc: '',           category: SIGHT  },
+      { name: 'Idemitsu Self Toho Nishitonda SS',       desc: '',           category: GAS    },
+      { name: 'ENEOS Serufugokokudu SS',                desc: '',           category: GAS    },
+      { name: '円月島',                                  desc: '白浜地標',   category: SIGHT  },
+      { name: '生石高原',                                desc: '',           category: SIGHT  },
+      { name: 'Koyasan',                                desc: '若有多餘時間', category: SIGHT  },
+      { name: 'AEON MALL Rinku Sennan',                desc: '購物・近機場', category: SHOP   },
+      { name: '黒潮市場',                               desc: '',           category: MART   },
+      { name: '小玉咖啡',                               desc: '',           category: FOOD   },
+      { name: '777-1 Esumi',                            desc: '',           category: FOOD   },
+      { name: '尾鷲牧場直営売店（尾鷲牛乳）',             desc: '',           category: FOOD   },
+      { name: 'Roadside Station Inobootan Land Susami', desc: '收費道路休息站', category: STOP },
+      { name: 'Roadside station Shihara-kaigan',       desc: '收費道路休息站', category: STOP },
+      { name: 'Road station Tsubakihananoyu',          desc: '',           category: STOP   },
+      { name: 'Road Station Kuchikumano Parking Area', desc: '收費道路休息站', category: STOP },
+      { name: 'Road Station Minabeume Shinko-kan',     desc: '收費道路休息站', category: STOP },
+      { name: '道の駅 白崎海洋公園',                     desc: '收費道路休息站', category: STOP },
+      { name: 'Kibi Yuasa PA (Northbound)',            desc: '收費道路休息站', category: STOP },
+      { name: 'Inami Service Area (Southbound)',        desc: '收費道路休息站', category: STOP },
+      { name: '紀之川下行服務區',                        desc: '',           category: STOP   }
     ]
   },
   {
     folder: '第六天 - 05/04', dateLabel: '05/04',
     places: [
-      { name: '關西機場', desc: '回程班機・帰国', category: TRANSIT }
+      { name: '關西機場', desc: '回程班機・帰国', category: TRANSIT, route: true }
     ]
   }
 ];
@@ -374,48 +460,33 @@ window.CHECKLIST_DATA = [
     '護照（有效期6個月以上）',
     '國際駕照',
     '旅遊保險文件（電子/紙本）',
-    '日本現金（日幣，建議帶3萬以上）',
-    '信用卡（Visa/Master）',
-    '緊急聯絡卡'
+    '日本現金',
+    '信用卡（Visa/Master）'
   ]},
   { key: 'tech',  icon: '📱', name: '3C & 電子', items: [
-    '手機充電線 + 變壓插頭',
+    '手機充電線',
     '行動電源（飛機需隨身攜帶）',
-    '相機 + 記憶卡',
-    '耳機',
-    'WiFi 分享器 / SIM 卡'
+    '運動相機 + 記憶卡',
+    '耳機'
   ]},
   { key: 'cloth', icon: '👕', name: '衣物', items: [
     '換洗衣物（5套）',
     '薄外套 / 防風夾克',
-    '睡衣',
     '內衣褲（多備一套）',
-    '舒適走路鞋',
-    '夾腳拖 / 室內拖鞋'
+    '舒適走路鞋'
   ]},
   { key: 'wash',  icon: '🧴', name: '盥洗 & 個人', items: [
     '牙刷 + 牙膏',
-    '洗髮精 + 潤髮乳',
-    '沐浴乳',
     '保養品 / 乳液',
-    '防曬乳',
     '刮鬍刀'
   ]},
   { key: 'med',   icon: '💊', name: '藥品', items: [
-    '感冒藥',
-    '止瀉藥',
-    '腸胃藥',
-    '暈車藥（自駕路段多）',
-    'OK繃 + 消毒棉',
+    'OK繃',
     '個人常備藥'
   ]},
   { key: 'misc',  icon: '🎒', name: '其他', items: [
     '雨傘 / 輕便雨衣',
-    '環保購物袋',
-    '行李箱鎖',
-    '旅行頸枕',
-    '濕紙巾 / 面紙',
-    '零食 / 泡麵（備用）'
+    '濕紙巾 / 面紙'
   ]}
 ];
 </script>
